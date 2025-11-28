@@ -1,8 +1,9 @@
-version: '3'
+version: '3.8'
+
 services:
   evolution-api:
     container_name: evolution_api
-    image: atendai/evolution-api
+    image: atendai/evolution-api:latest
     restart: always
     ports:
       - "8080:8080"
@@ -13,5 +14,5 @@ services:
       - evolution_instances:/evolution/instances
 
 volumes:
-  evolution_store:
-  evolution_instances:
+  evolution_store: {}
+  evolution_instances: {}
