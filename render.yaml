@@ -1,6 +1,3 @@
-# Blueprint para desplegar evolution-api en Render como servicio web
-# usando una imagen Docker preconstruida desde Docker Hub.
-
 services:
   - type: web
     plan: free
@@ -10,19 +7,7 @@ services:
       url: docker.io/atendai/evolution-api:latest
 
     envVars:
-      # Carga variables desde un archivo .env si lo necesitas
-      # Aquí puedes definirlas manualmente o usar generateValue si aplica
+      - key: PORT
+        value: 8080
       - key: ENVIRONMENT
         value: production
-      - key: API_PORT
-        value: 8080
-
-    # Mapea el puerto interno del contenedor al puerto público
-    ports:
-      - port: 8080
-
-    # Define volúmenes si necesitas persistencia (Render no soporta volúmenes como Docker Compose)
-    # Puedes usar servicios externos como bases de datos o almacenamiento en la nube
-
-# Render no admite volúmenes como en Docker Compose,
-# por lo tanto, se recomienda usar almacenamiento externo si evolution-api lo requiere.
